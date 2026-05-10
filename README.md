@@ -31,9 +31,9 @@ https://www.kaggle.com/datasets/souhagaa/nasa-access-log-dataset-1995/code
 - PySpark 3.4.1  
 - Java 11 o 17
   
-'''
+´´´
 Instalar dependencias: pip install pyspark==3.4.1
-'''
+´´´
 
 ## Exploración de datos
 
