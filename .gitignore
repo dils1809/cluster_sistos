@@ -1,5 +1,6 @@
 data.csv
 output_clean/
 vscode/
+.vscode/
 __pycache__/
 .env
