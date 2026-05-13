@@ -1,16 +1,14 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, when, from_unixtime
+from pyspark.sql.functions import col, when, from_unixtime, avg
 
-# Crear sesión de Spark
 spark = SparkSession.builder \
-    .appName("NASA Cleaning") \
+    .appName("NASA Pipeline") \
     .getOrCreate()
 
-# Cargar dataset
-logs = spark.read.csv(
-    "data.csv",
-    header=True
-)
+# CARGA
+logs = spark.read.csv("data.csv", header=True)
+
+# LIMPIEZA
 
 # Mostrar columnas originales
 print("Columnas originales:")
@@ -38,10 +36,7 @@ df = df.withColumn(
 )
 
 # convertir timestamp a fecha
-df = df.withColumn(
-    "datetime",
-    from_unixtime(col("time"))
-)
+df = df.withColumn("datetime", from_unixtime(col("time")))
 
 # Métricas
 total_original = logs.count()
@@ -58,6 +53,4 @@ df.printSchema()
 # Generar csv limpio con hadoop
 df.coalesce(1).write.mode("overwrite").option("header", True).csv("data_clean")
 
-# Guardar limpio
-#df.write.mode("overwrite").csv("data_clean",header=True)
-
+# ANÁLISIS
