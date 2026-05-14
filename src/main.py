@@ -6,8 +6,7 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # CARGA
-logs = spark.read.csv("data.csv", header=True) #cambiar la ruta si se subió el otro csv de data_clean a "hdfs:///user/hadoop/data_clean.csv"
-
+logs = spark.read.csv("hdfs:///user/hadoop/data/data.csv", header=True) 
 
 # LIMPIEZA
 
