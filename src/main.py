@@ -6,7 +6,6 @@ spark = SparkSession.builder \
     .appName("NASA Pipeline ETL") \
     .enableHiveSupport() \
     .getOrCreate()
-
 t_inicio = time.time()
 
 # PASO 1 — CARGA DESDE HDFS
